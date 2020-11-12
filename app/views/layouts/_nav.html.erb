@@ -1,0 +1,34 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light shadow p-3 rounded">
+  <div class="container">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <i class="fas fa-box-open"></i> FileKabinet
+    <% end %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <% if user_signed_in? %>
+        <ul class="nav mt-3 mt-lg-0 col justify-content-between">
+          <li class="nav-item ml-lg-5">
+            <%= link_to new_doc_path, class: 'btn btn-outline-info' do %>
+              <i class="fas fa-pencil-alt"></i> Create Doc
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-outline-danger' do %>
+              <i class="fas fa-sign-out-alt"></i> Sign Out
+            <% end %>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="nav col-md-12 justify-content-end mt-3 mt-lg-0">
+          <li class="nav-item">
+            <%= link_to new_user_session_path, class: 'btn btn-outline-primary' do %>
+              <i class="fas fa-sign-in-alt"></i> Log In
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
